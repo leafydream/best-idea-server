@@ -1,0 +1,45 @@
+version: "3"
+services:
+  best-idea:
+    build: .
+    container_name: best_idea_server
+    restart: always
+    ports:
+      - "8080:9000"
+    networks:
+      - app-network
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    container_name: best_idea_mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_USER=root   #创建root用户
+      - MYSQL_ROOT_PASSWORD=root #设置root用户密码
+      - MYSQL_PASSWORD=12345678
+      - TZ=Asia/Shanghai # 设置时区
+    volumes:
+      - ./data:/var/lib/mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    networks:
+      - app-network
+  redis:
+    image: redis
+    container_name: best_idea_redis
+    restart: always
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.leafych.bestideaserver.dao.UserMapper">
+    <resultMap id="UserInfoMap" type="com.leafych.bestideaserver.entity.User">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="sex" property="sex"/>
+        <result column="age" property="age"/>
+    </resultMap>
+
+    <!--<select id = "queryAllUsers" resultMap="UserInfoMap">-->
+    <select id="queryAllUsers" resultType="com.leafych.bestideaserver.entity.User">
+       SELECT id,name ,sex, age FROM user
+    </select>
+</mapper>
