@@ -1,9 +1,9 @@
-package com.leafych.bestideaserver.services;
+package com.leafych.bestideaserver.service;
 
 import com.leafych.bestideaserver.entity.User;
 
 import java.util.List;
 
-public interface UserServices {
+public interface UserService {
     List<User> queryAllUsers();
 }

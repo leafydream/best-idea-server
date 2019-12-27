@@ -1,7 +1,8 @@
 package com.leafych.bestideaserver.controller;
 
 import com.leafych.bestideaserver.entity.User;
-import com.leafych.bestideaserver.services.UserServices;
+import com.leafych.bestideaserver.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,10 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@Slf4j
 public class UserController {
 
     @Autowired
-    private UserServices userServices;
+    private UserService userService;
 
     @GetMapping("/")
     public String index() {
@@ -21,6 +23,6 @@ public class UserController {
 
     @GetMapping("/queryAllUsers")
     public List<User> queryAllUsers() {
-        return userServices.queryAllUsers();
+        return userService.queryAllUsers();
     }
 }
