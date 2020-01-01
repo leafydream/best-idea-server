@@ -12,14 +12,8 @@ import java.util.List;
 @RestController
 @Slf4j
 public class UserController {
-
     @Autowired
     private UserService userService;
-
-    @GetMapping("/")
-    public String index() {
-        return "hello springboot";
-    }
 
     @GetMapping("/queryAllUsers")
     public List<User> queryAllUsers() {

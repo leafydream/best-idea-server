@@ -14,10 +14,9 @@ import java.util.UUID;
 @RestController
 public class FileController {
 
-    private Map<String, Object> resultMap = new HashMap<>();
-
     @PostMapping("/fileUpload")
     public Map<String, Object> fileUpload(@RequestParam("file") MultipartFile file) {
+        Map<String, Object> resultMap = new HashMap<>();
         if(file.isEmpty()){
             resultMap.put("文件为空", false);
             return resultMap;
